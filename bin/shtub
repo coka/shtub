@@ -4,6 +4,7 @@
 
 SCRIPT_DIRECTORY=$(dirname $(readlink --canonicalize $0))
 SHTUB_DEPTH=0
+CURRENT_EXAMPLE=""
 
 . $SCRIPT_DIRECTORY/helpers # load helpers
 
@@ -23,8 +24,7 @@ describe()
 it()
 {
   print_indentation
-  printf "$1"
-  printf "... "
+  CURRENT_EXAMPLE="$1"
 }
 
 expect()
@@ -32,11 +32,9 @@ expect()
   expected_value="$2"
   actual_value="$($1)"
   if [ "$expected_value" = "$actual_value" ]; then
-    println "OK"
-    indent
+    print_ok
   else
-    println "FAILED"
-    indent
+    print_failed
   fi
 }
 

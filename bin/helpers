@@ -13,6 +13,20 @@ print_indentation()
   done
 }
 
+print_ok()
+{
+  println "\r$(print_indentation)\033[32m$CURRENT_EXAMPLE"
+  tput sgr0
+  indent
+}
+
+print_failed()
+{
+  println "\r$(print_indentation)\033[31m$CURRENT_EXAMPLE"
+  tput sgr0
+  indent
+}
+
 # indentation helpers
 
 indent()   { SHTUB_DEPTH=$((SHTUB_DEPTH+1)); }
