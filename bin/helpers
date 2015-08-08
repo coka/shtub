@@ -27,6 +27,12 @@ print_failed()
   indent
 }
 
+print_skip()
+{
+  println "$CURRENT_EXAMPLE - Invalid use of $1. Skipping..."
+  tput sgr0
+}
+
 # indentation helpers
 
 indent()   { SHTUB_DEPTH=$((SHTUB_DEPTH+1)); }

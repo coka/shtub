@@ -29,13 +29,27 @@ it()
 
 expect()
 {
-  expected_value="$2"
+  expected_value="$3"
   actual_value="$($1)"
-  if [ "$expected_value" = "$actual_value" ]; then
-    print_ok
-  else
-    print_failed
-  fi
+  case "$2" in
+    --to-eql)
+      if [ "$expected_value" = "$actual_value" ]; then
+        print_ok
+      else
+        print_failed
+      fi
+      ;;
+    --not-to-eql)
+      if [ "$expected_value" != "$actual_value" ]; then
+        print_ok
+      else
+        print_failed
+      fi
+      ;;
+    *)
+      print_skip "expect()"
+      ;;
+  esac
 }
 
 end() { unindent; }

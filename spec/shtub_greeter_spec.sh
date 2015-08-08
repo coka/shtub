@@ -5,11 +5,11 @@ require "shtub_greeter.sh"
 describe "shtub greeter"
   describe "greet()"
     it "returns 'Hello, world!'"
-      expect greet "Hello, world!"
+      expect greet --to-eql "Hello, world!"
     end
 
-    it "returns 'Goodbye, cruel world!'"
-      expect greet "Goodbye, cruel world!"
+    it "does not return 'Goodbye, cruel world!'"
+      expect greet --not-to-eql "Goodbye, cruel world!"
     end
   end
 end
