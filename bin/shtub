@@ -27,6 +27,18 @@ it()
   CURRENT_EXAMPLE="$1"
 }
 
+allow()
+{
+  case "$2" in
+    --to-return)
+      eval "$1() { printf $3; }"
+      ;;
+    *)
+      print_skip "allow()"
+      ;;
+  esac
+}
+
 expect()
 {
   expected_value="$3"
