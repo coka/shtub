@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+# print helpers
+
+println() { printf "$1\n"; }
+
+print_indentation()
+{
+  spaces=$(($SHTUB_DEPTH*2))
+  while [ $spaces -gt 0 ]; do
+    printf " "
+    spaces=$((spaces-1))
+  done
+}
+
+# indentation helpers
+
+indent()   { SHTUB_DEPTH=$((SHTUB_DEPTH+1)); }
+
+unindent() { SHTUB_DEPTH=$((SHTUB_DEPTH-1)); }
