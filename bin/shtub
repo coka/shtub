@@ -6,8 +6,10 @@ SCRIPT_DIRECTORY=$(dirname $(readlink --canonicalize $0))
 SHTUB_DEPTH=0
 CURRENT_EXAMPLE=""
 
-. $SCRIPT_DIRECTORY/helpers # load helpers
+. $SCRIPT_DIRECTORY/../src/shtub_helpers.sh
+. $SCRIPT_DIRECTORY/../src/shtub_helper_aliases.sh
 . $SCRIPT_DIRECTORY/../src/shtub_core.sh
+. $SCRIPT_DIRECTORY/../src/shtub_core_aliases.sh
 
 # run all listed spec files
 

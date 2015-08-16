@@ -2,9 +2,9 @@
 
 # print helpers
 
-println() { printf "$1\n"; }
+_shtub_println() { printf "$1\n"; }
 
-print_indentation()
+_shtub_print_indentation()
 {
   spaces=$(($SHTUB_DEPTH*2))
   while [ $spaces -gt 0 ]; do
@@ -13,21 +13,21 @@ print_indentation()
   done
 }
 
-print_ok()
+_shtub_print_ok()
 {
   println "\r$(print_indentation)\033[32m$CURRENT_EXAMPLE"
   tput sgr0
   indent
 }
 
-print_failed()
+_shtub_print_failed()
 {
   println "\r$(print_indentation)\033[31m$CURRENT_EXAMPLE"
   tput sgr0
   indent
 }
 
-print_skip()
+_shtub_print_skip()
 {
   println "$CURRENT_EXAMPLE - Invalid use of $1. Skipping..."
   tput sgr0
@@ -35,6 +35,6 @@ print_skip()
 
 # indentation helpers
 
-indent()   { SHTUB_DEPTH=$((SHTUB_DEPTH+1)); }
+_shtub_indent()   { SHTUB_DEPTH=$((SHTUB_DEPTH+1)); }
 
-unindent() { SHTUB_DEPTH=$((SHTUB_DEPTH-1)); }
+_shtub_unindent() { SHTUB_DEPTH=$((SHTUB_DEPTH-1)); }

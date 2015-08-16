@@ -1,27 +1,28 @@
 #!/usr/bin/env sh
 
-require()
+. $SCRIPT_DIRECTORY/../src/shtub_helpers.sh
+. $SCRIPT_DIRECTORY/../src/shtub_helper_aliases.sh
+
+_shtub_require()
 {
   script_name=$1
   . $SCRIPT_DIRECTORY/../lib/$script_name
 }
 
-describe()
+_shtub_describe()
 {
   print_indentation
   println "$1"
   indent
 }
 
-alias context=describe
-
-it()
+_shtub_it()
 {
   print_indentation
   CURRENT_EXAMPLE="$1"
 }
 
-allow()
+_shtub_allow()
 {
   case "$2" in
     --to-return)
@@ -33,7 +34,7 @@ allow()
   esac
 }
 
-expect()
+_shtub_expect()
 {
   expected_value="$3"
   actual_value="$1"
@@ -57,5 +58,3 @@ expect()
       ;;
   esac
 }
-
-end() { unindent; }
