@@ -44,7 +44,7 @@ allow()
 expect()
 {
   expected_value="$3"
-  actual_value="$($1)"
+  actual_value="$1"
   case "$2" in
     --to-eql)
       if [ "$expected_value" = "$actual_value" ]; then
