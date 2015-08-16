@@ -21,6 +21,8 @@ describe()
   indent
 }
 
+alias context=describe
+
 it()
 {
   print_indentation
